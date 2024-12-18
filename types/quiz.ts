@@ -1,4 +1,4 @@
-export type QuestionType = 'text' | 'date' | 'number' | 'dropdown' | 'multiselect';
+export type QuestionType = 'text' | 'date' | 'number' | 'dropdown' | 'multiselect' | 'group';
 
 export interface Option {
   value: string;
@@ -11,6 +11,7 @@ export interface Question {
   type: QuestionType;
   options?: Option[];
   subQuestion?: Question;
+  subQuestions?: Question[]; // Add this to support multiple sub-questions
 }
 
 export interface QuizState {
