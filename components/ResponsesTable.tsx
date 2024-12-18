@@ -124,7 +124,7 @@ const ResponsesTable: React.FC<ResponsesTableProps> = ({ questions, quizStates: 
 
   const totalResponses = quizStates.length;
   const preferredBranchStats = quizStates.reduce((acc, state) => {
-    const branch = state.answers['preferred_branch']?.value;
+    const branch = state.answers['preferred_branch']?.value as string;
     if (branch) {
       acc[branch] = (acc[branch] || 0) + 1;
     }

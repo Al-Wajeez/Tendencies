@@ -29,6 +29,10 @@ export const Question: React.FC<QuestionProps> = ({ question, answer, onAnswerCh
     onAnswerChange({ ...answer, subQuestion: subAnswer });
   };
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    onAnswerChange({ ...answer, value: e.target.value });
+  };
+
   const renderInput = () => {
     switch (question.type) {
       case 'text':
@@ -39,7 +43,7 @@ export const Question: React.FC<QuestionProps> = ({ question, answer, onAnswerCh
         return <input type="number" className="form-control" value={answer?.value || ''} onChange={handleNumberChange} />;
       case 'dropdown':
         return (
-          <select className="form-select" value={answer?.value || ''} onChange={handleInputChange}>
+          <select className="form-select" value={answer?.value || ''} onChange={handleSelectChange}>
             <option value="">اختر إجابة</option>
             {question.options?.map((option) => (
               <option key={option.value} value={option.value}>
